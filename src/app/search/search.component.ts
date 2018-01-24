@@ -13,7 +13,7 @@ import { SearchService } from './search.service'
 export class SearchComponent implements OnInit {
   weather: any;
   searchSubject = new Subject();
-  idealConditions: false;
+  idealConditions: boolean = false;
   idealWindDir: boolean = true;
 
   constructor(private searchService: SearchService) { }
