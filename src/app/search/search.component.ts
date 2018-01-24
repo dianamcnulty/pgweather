@@ -15,6 +15,7 @@ export class SearchComponent implements OnInit {
   searchSubject = new Subject();
   idealConditions: boolean = false;
   idealWindDir: boolean = true;
+  zip: any;
 
   constructor(private searchService: SearchService) { }
 

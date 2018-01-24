@@ -10,7 +10,7 @@
     <input [(ngModel)]="zip" type="text" placeholder="Zip Code Here" (keyup)="findWeather(zip)"/>
     <input (click)="findWeather(zip)" type="submit" value="Search"/>
 </section>
-<section id='weather' *ngIf="weather; else elseBlock">
+<section id='weather' *ngIf="weather">
   <h3 [ngClass]="{'ideal': idealConditions, location: true}"><img [ngClass]="{'show-check': idealConditions, 'no-check': !idealConditions}" src='https://findicons.com/files/icons/1964/colorcons_green/128/checkmark.png'>Here's the weather in {{weather.name}}:</h3>
   <p *ngFor='let condition of weather.weather' [ngClass]="{'danger':(condition.description.includes('rain'))||
     (condition.description.includes('hail')) || (condition.description.includes('sleet')),
