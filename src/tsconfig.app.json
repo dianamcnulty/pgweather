@@ -4,9 +4,9 @@
     "outDir": "../out-tsc/app",
     "outFile":"../out-tsc/app",
     "baseUrl": "./",
-    "module": "amd",
+    "module": "es2015",
     "types": [],
-    "allowJs": true
+    "allowJs": false
   },
   "exclude": [
     "test.ts",
