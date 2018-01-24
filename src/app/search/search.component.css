@@ -1,0 +1,25 @@
+.location{
+  display: inline-block;
+  padding: 5px;
+}
+.danger{
+  color: red;
+}
+.safe {
+  color: green;
+}
+.caution {
+  color:orange;
+}
+.ideal {
+  border: 2px green solid;
+}
+.show-check {
+  display:inline-block;
+  width: 20px;
+  height: 20px;
+  padding: 5px 5px 0 0;
+}
+.no-check {
+  display: none;
+}
