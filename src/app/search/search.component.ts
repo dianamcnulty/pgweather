@@ -14,7 +14,7 @@ export class SearchComponent implements OnInit {
   weather: any;
   searchSubject = new Subject();
   idealConditions: false;
-  idealWindDir: true;
+  idealWindDir: boolean = true;
 
   constructor(private searchService: SearchService) { }
 
