@@ -4,7 +4,7 @@
     "outDir": "../out-tsc/app",
     "outFile":"../out-tsc/app",
     "baseUrl": "./",
-
+    "module": "amd",
     "types": [],
     "allowJs": true
   },
