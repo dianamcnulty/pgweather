@@ -40,28 +40,28 @@ export class SearchComponent implements OnInit {
   getIdealWindDir(){
     switch(this.weather.name){
       case "South Paris":
-        if (this.weather.wind.deg > 120 && this.weather.wind.deg > 310){
+        if (this.weather.wind.deg > 120 && this.weather.wind.deg < 310){
           this.idealWindDir = true
         } else {
           this.idealWindDir = false
         }
         break;
       case "Blue Hill":
-        if (this.weather.wind.deg > 60 && this.weather.wind.deg > 190){
+        if (this.weather.wind.deg > 60 && this.weather.wind.deg < 190){
           this.idealWindDir = true
         } else {
           this.idealWindDir = false
         }
         break;
       case "Frankfort":
-        if (this.weather.wind.deg > 170 && this.weather.wind.deg > 310){
+        if (this.weather.wind.deg > 170 && this.weather.wind.deg < 310){
           this.idealWindDir = true
         } else {
           this.idealWindDir = false
         }
         break;
       case "Sullivan":
-        if (this.weather.wind.deg > 45 && this.weather.wind.deg > 250){
+        if (this.weather.wind.deg > 45 && this.weather.wind.deg < 250){
           this.idealWindDir = true
         } else {
           this.idealWindDir = false
