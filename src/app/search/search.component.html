@@ -1,25 +1,23 @@
 <section>
-  <h3>Known Flying Sites</h3>
-  <input (click)="findWeather('04281')" type="submit" value="Streaked Mt.">
-  <input (click)="findWeather('04438')" type="submit" value="Mt. Waldo">
-  <input (click)="findWeather('04614')" type="submit" value="Blue Hill">
-  <input (click)="findWeather('04664')" type="submit" value="Schoodic Mt.">
+  <h3 class='dark-text'>Choose a Known Flying Site</h3>
+  <div class="site-buttons">
+    <button (click)="findWeather('04281')" >Streaked Mt.</button>
+    <button (click)="findWeather('04438')" >Mt. Waldo</button>
+    <button (click)="findWeather('04614')" >Blue Hill</button>
+    <button (click)="findWeather('04664')" >Schoodic Mt.</button>
+  </div>
 </section>
 <section>
-    <h4> Or Search by Zip Code</h4>
+    <h4 class='dark-text'> Or Search by Zip Code</h4>
     <input [(ngModel)]="zip" type="text" placeholder="Zip Code Here" (keyup)="findWeather(zip)"/>
-    <input (click)="findWeather(zip)" type="submit" value="Search"/>
+    <input class='button' (click)="findWeather(zip)" type="submit" value="Search"/>
 </section>
-<section id='weather' *ngIf="weather">
-  <h3 [ngClass]="{'ideal': idealConditions, location: true}"><img [ngClass]="{'show-check': idealConditions, 'no-check': !idealConditions}" src='https://findicons.com/files/icons/1964/colorcons_green/128/checkmark.png'>Here's the weather in {{weather.name}}:</h3>
-  <p *ngFor='let condition of weather.weather' [ngClass]="{'danger':(condition.description.includes('rain'))||
-    (condition.description.includes('hail')) || (condition.description.includes('sleet')),
-    'caution': condition.description.includes('snow'), 'safe': condition.description.includes('rain') == false ||
-    condition.description.includes('snow') == false ||
-    condition.description.includes('sleet') == false ||
-    condition.description.includes('hail') == false }">Chance of {{condition.description}}.</p>
-  <p id='temp' [ngClass]="{'caution': weather.main.temp <= 35, 'safe': weather.main.temp > 35}">There's a high of {{weather.main.temp_max}} degrees and a low of {{weather.main.temp_min}} degrees.</p>
-  <p id='windspeed' [ngClass]="{'danger': weather.wind.speed > 12, 'safe': weather.wind.speed < 12}" >wind speed is {{weather.wind.speed}} <span *ngIf="weather.wind.gust" [ngClass]="{danger: (weather.wind.gust - weather.wind.speed) > 5}">gusting to {{weather.wind.gust}} </span>
+<hr>
+<section id='weather' class='weather-box' *ngIf="weather">
+  <h3 class='town-name'[ngClass]="{'ideal': idealConditions, location: true}"><img [ngClass]="{'show-check': idealConditions, 'no-check': !idealConditions}" src='https://findicons.com/files/icons/1964/colorcons_green/128/checkmark.png'>Here's the weather in {{weather.name}}:</h3>
+  <p  [ngClass]="{'danger': descriptionRating == danger, 'caution': descriptionRating == 'caution', 'safe': descriptionRating == 'safe' }">{{conditionDescription}}</p>
+  <p id='temp' [ngClass]="{'caution': weather.main.temp <= 35, 'safe': weather.main.temp > 35}">There's a high of {{weather.main.temp_max}}˚ and a low of {{weather.main.temp_min}}˚</p>
+  <p id='windspeed' [ngClass]="{'danger': weather.wind.speed > 12, 'safe': weather.wind.speed < 12}" >Wind speed is {{weather.wind.speed}} <span *ngIf="weather.wind.gust" [ngClass]="{danger: (weather.wind.gust - weather.wind.speed) > 5}">gusting to {{weather.wind.gust}} </span>
     <span [ngClass]="{'safe': idealWindDir}" *ngIf='weather.wind.deg > 45 && weather.wind.deg <= 120'>from the E</span>
     <span [ngClass]="{'safe': idealWindDir}" *ngIf='weather.wind.deg > 120 && weather.wind.deg <= 230'>from the S</span>
     <span [ngClass]="{'safe': idealWindDir}" *ngIf='weather.wind.deg > 230 && weather.wind.deg <= 310'>from the W</span>

@@ -1,18 +1,19 @@
+
 .location{
   display: inline-block;
   padding: 5px;
 }
 .danger{
-  color: red;
+  color: #F0076B;
 }
 .safe {
-  color: green;
+  color: #81D302;
 }
 .caution {
-  color:orange;
+  color:#FF7018;
 }
 .ideal {
-  border: 2px green solid;
+  border: 2px #81D302 solid;
 }
 .show-check {
   display:inline-block;
@@ -22,4 +23,21 @@
 }
 .no-check {
   display: none;
+}
+.site-buttons {
+  display:flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: stretch;
+}
+.weather-box{
+  padding: 0 35px 15px 35px;
+  margin-top: 35px;
+  margin:auto;
+  width:75%;
+  border: 1px #4D3CA1;
+  background: rgba(0,0,0,0.4);
+}
+.town-name {
+  color: #14BDCC;
 }
