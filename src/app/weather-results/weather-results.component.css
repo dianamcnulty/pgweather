@@ -1,5 +1,4 @@
-
-/* .location{
+.location{
   display: inline-block;
   padding: 5px;
 }
@@ -23,12 +22,6 @@
 }
 .no-check {
   display: none;
-} */
-.site-buttons {
-  display:flex;
-  width: 100%;
-  justify-content: space-around;
-  align-items: stretch;
 }
 .weather-box{
   padding: 0 35px 15px 35px;

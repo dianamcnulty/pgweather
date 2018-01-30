@@ -29,6 +29,10 @@ h1 {
 h1, .dark-text {
   color: black;
 }
+.advisory {
+  font-style: italic;
+  padding: 20px;
+}
 input[type=submit], button {
   border-radius: 0;
   background: linear-gradient(#1060A1, #4D3CA1);

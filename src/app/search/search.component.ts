@@ -13,11 +13,8 @@ import { SearchService } from './search.service'
 export class SearchComponent implements OnInit {
   weather: any;
   searchSubject = new Subject();
-  idealConditions: boolean = false;
-  idealWindDir: boolean = true;
   zip: any;
-  descriptionRating: string= 'safe';
-  conditionDescription: string= 'default';
+
 
   constructor(private searchService: SearchService) { }
 
@@ -33,102 +30,10 @@ export class SearchComponent implements OnInit {
         .subscribe((response) => {
           console.log(response.json())
           this.weather = response.json()
-          this.getIdealWindDir()
-          this.getIdealConditions()
-          this.getDescriptionRating()
+
         });
     })
 
-  }
-  getIdealWindDir(){
-    switch(this.weather.name){
-      case "South Paris":
-        if (this.weather.wind.deg > 120 && this.weather.wind.deg < 310){
-          this.idealWindDir = true
-        } else {
-          this.idealWindDir = false
-        }
-        break;
-      case "Blue Hill":
-        if (this.weather.wind.deg > 60 && this.weather.wind.deg < 190){
-          this.idealWindDir = true
-        } else {
-          this.idealWindDir = false
-        }
-        break;
-      case "Frankfort":
-        if (this.weather.wind.deg > 170 && this.weather.wind.deg < 310){
-          this.idealWindDir = true
-        } else {
-          this.idealWindDir = false
-        }
-        break;
-      case "Sullivan":
-        if (this.weather.wind.deg > 45 && this.weather.wind.deg < 250){
-          this.idealWindDir = true
-        } else {
-          this.idealWindDir = false
-        }
-        break;
-      default:
-        this.idealWindDir = true
-    }
-    return this.idealWindDir
-  }
-
-  getDescriptionRating(){
-    let conditions = 'Chance of '
-    this.weather.weather.forEach(condition => {
-      console.log("condition is,", condition)
-      conditions += condition.description + ", "
-      switch (condition.main){
-        case "Rain" || "Hail" || "Sleet":
-          console.log("rain")
-          this.descriptionRating = "danger";
-          break;
-        case "Snow":
-        console.log("snow")
-          this.descriptionRating = "caution";
-          break;
-        default:
-        console.log("default")
-          this.descriptionRating = "safe";
-      }
-    })
-    conditions = conditions.substring(0, conditions.length - 2)
-    this.conditionDescription = conditions
-    return this.descriptionRating;
-
-  }
-  getIdealConditions() {
-    console.log("getIdealConditions() is running")
-    if (this.weather.wind.speed > 12 || (this.weather.wind.gust - this.weather.wind.speed) > 5 || this.weather.main.temp < 30) {
-      console.log("too windy or too cold")
-      this.idealConditions = false
-      return this.idealConditions
-    }
-    if(this.getDescriptionRating() === "danger"){
-      this.idealConditions = false
-      return this.idealConditions
-    }
-    // this.weather.weather.forEach(condition => {
-    //
-    //
-    //   if((condition.description.includes('rain'))||
-    //     (condition.description.includes('hail')) || (condition.description.includes('sleet')) ||
-    //     (condition.description.includes('snow'))){
-    //       console.log("bad conditions")
-    //       this.idealConditions = false
-    //       return this.idealConditions
-    //     }
-    // })
-
-    if (this.getIdealWindDir() === false) {
-      this.idealConditions = false
-      return this.idealConditions
-    }
-    this.idealConditions = true
-    return this.idealConditions
   }
 
 }
