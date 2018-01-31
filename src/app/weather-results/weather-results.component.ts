@@ -13,7 +13,7 @@ export class WeatherResultsComponent implements OnInit {
   conditionDescription: string= 'default';
 
   constructor() { }
-
+  ngOnInit() {}
   ngOnChanges() {
     if(this.weather){
       this.getIdealWindDir();

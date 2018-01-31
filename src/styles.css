@@ -43,12 +43,19 @@ input[type=submit], button {
   -webkit-appearance: button;
 }
 
-input {
+input{
   height: 20px;
   background: rgba(0,0,0,0.4);
   border: none;
   color: #eee;
   padding-left: 5px;
+}
+select {
+  color: black;
+  font-style: italic;
+  font-size: 12pt;
+  height: 25px;
+  background: rgba(255, 255,255,0.1);
 }
 input::placeholder {
   color: #14BDCC;

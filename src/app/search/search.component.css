@@ -1,29 +1,6 @@
-
-/* .location{
+.choose {
   display: inline-block;
-  padding: 5px;
 }
-.danger{
-  color: #F0076B;
-}
-.safe {
-  color: #81D302;
-}
-.caution {
-  color:#FF7018;
-}
-.ideal {
-  border: 2px #81D302 solid;
-}
-.show-check {
-  display:inline-block;
-  width: 20px;
-  height: 20px;
-  padding: 5px 5px 0 0;
-}
-.no-check {
-  display: none;
-} */
 .site-buttons {
   display:flex;
   width: 100%;

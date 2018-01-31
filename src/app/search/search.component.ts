@@ -14,7 +14,10 @@ export class SearchComponent implements OnInit {
   weather: any;
   searchSubject = new Subject();
   zip: any;
-
+  flyingSites: any;
+  stateList: Array<string> =  [];
+  currentStateSites: Array<any> = []
+  currentState: string = 'Select a State'
 
   constructor(private searchService: SearchService) { }
 
@@ -26,14 +29,31 @@ export class SearchComponent implements OnInit {
     this.searchSubject.debounceTime(1000) // wait 1 second after the user input
     .distinctUntilChanged()
     .subscribe(zip => {
-        this.searchService.createApiObservable(zip)
+        this.searchService.getWeather(zip)
         .subscribe((response) => {
           console.log(response.json())
           this.weather = response.json()
-
         });
     })
-
+    this.searchService.getFlyingSites().subscribe(response=>{
+      this.flyingSites = response.json().flyingSites
+      this.flyingSites.forEach(site => {
+        if(!this.stateList.includes(site.state)){
+          this.stateList.push(site.state)
+        }
+      })
+      console.log('flying sites', this.stateList)
+    }
+    )
+  }
+  getCurrentStateSites(state){
+    this.currentStateSites = []
+    this.flyingSites.forEach(site =>{
+      if (site.state == state) {
+        this.currentStateSites.push(site)
+      }
+    })
+    console.log('state sites', this.currentStateSites)
   }
 
 }

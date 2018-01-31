@@ -1,11 +1,18 @@
 <section>
-  <h3 class='dark-text'>Choose a Known Flying Site in Maine</h3>
+  <h3 class='dark-text choose'>Known Flying Sites in</h3>
+  <select [(ngModel)]="currentState"  (change)="getCurrentStateSites(currentState)">
+    <option selected >Select a State</option>
+    <option *ngFor="let state of stateList" value="{{state}}">{{state}}</option>
+  </select>
   <div class="site-buttons">
+    <button *ngFor="let site of currentStateSites"  (click)="findWeather(site.zip)" >{{site.name}}</button>
+  </div>
+  <!-- <div class="site-buttons">
     <button (click)="findWeather('04281')" >Streaked Mt.</button>
     <button (click)="findWeather('04438')" >Mt. Waldo</button>
     <button (click)="findWeather('04614')" >Blue Hill</button>
     <button (click)="findWeather('04664')" >Schoodic Mt.</button>
-  </div>
+  </div> -->
 </section>
 <section>
     <h4 class='dark-text'> Or Search by Zip Code</h4>

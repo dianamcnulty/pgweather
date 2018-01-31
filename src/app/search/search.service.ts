@@ -4,7 +4,11 @@ import { Http } from '@angular/http';
 export class SearchService {
   constructor(private http: Http) { }
 
-  createApiObservable (zip) {
+  getWeather (zip) {
     return this.http.get('https://api.openweathermap.org/data/2.5/weather?zip=' + zip + ',us&appid=052f26926ae9784c2d677ca7bc5dec98&&units=imperial')
+  }
+  getFlyingSites(){
+    console.log('requesting flying sites.')
+    return this.http.get('http://localhost:8080/sites/')
   }
 }
