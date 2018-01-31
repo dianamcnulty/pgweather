@@ -5,7 +5,7 @@
     <option *ngFor="let state of stateList" value="{{state}}">{{state}}</option>
   </select>
   <div class="site-buttons">
-    <button *ngFor="let site of currentStateSites"  (click)="findWeather(site.zip); setCurrentSite(site)" >{{site.name}}</button>
+    <button class='site-button' *ngFor="let site of currentStateSites"  (click)="findWeather(site.zip); setCurrentSite(site)" >{{site.name}}</button>
   </div>
   <!-- <div class="site-buttons">
     <button (click)="findWeather('04281')" >Streaked Mt.</button>

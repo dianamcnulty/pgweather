@@ -9,4 +9,5 @@
     <span [ngClass]="{'safe': idealWindDir}" *ngIf='weather.wind.deg > 230 && weather.wind.deg <= 310'>from the W</span>
     <span [ngClass]="{'safe': idealWindDir}" *ngIf='weather.wind.deg <= 45 || weather.wind.deg > 310'>from the N</span></p>
     <p class='caution advisory' *ngIf='weather.wind.speed > 13'> Due to wind conditions, it is not advised that P2 or inexperienced pilots fly here today.</p>
+    <div class='caution advisory' *ngIf='currentSite.restrictions'><p *ngFor="let restriction of currentSite.restrictions">{{restriction}}</p></div>
 </section>

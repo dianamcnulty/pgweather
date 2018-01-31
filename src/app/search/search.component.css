@@ -7,6 +7,9 @@
   justify-content: space-around;
   align-items: stretch;
 }
+.site-button{
+ flex-grow: 1;
+}
 .weather-box{
   padding: 0 35px 15px 35px;
   margin-top: 35px;
