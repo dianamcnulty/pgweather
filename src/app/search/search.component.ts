@@ -18,6 +18,7 @@ export class SearchComponent implements OnInit {
   stateList: Array<string> =  [];
   currentStateSites: Array<any> = []
   currentState: string = 'Select a State'
+  currentSite: any;
 
   constructor(private searchService: SearchService) { }
 
@@ -55,5 +56,8 @@ export class SearchComponent implements OnInit {
     })
     console.log('state sites', this.currentStateSites)
   }
+  setCurrentSite(site){
+    this.currentSite = site
 
+  }
 }

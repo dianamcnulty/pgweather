@@ -11,6 +11,7 @@ export class WeatherResultsComponent implements OnInit {
   idealWindDir: boolean = true;
   descriptionRating: string= 'safe';
   conditionDescription: string= 'default';
+  @Input() currentSite: any;
 
   constructor() { }
   ngOnInit() {}
@@ -23,40 +24,49 @@ export class WeatherResultsComponent implements OnInit {
   }
   getIdealWindDir(){
     console.log('getIdealWindDir is running')
-    switch(this.weather.name){
-      case "South Paris":
-        if (this.weather.wind.deg > 120 && this.weather.wind.deg < 310){
-          this.idealWindDir = true
-        } else {
-          this.idealWindDir = false
-        }
-        break;
-      case "Blue Hill":
-        if (this.weather.wind.deg > 60 && this.weather.wind.deg < 190){
-          this.idealWindDir = true
-        } else {
-          this.idealWindDir = false
-        }
-        break;
-      case "Frankfort":
-        if (this.weather.wind.deg > 170 && this.weather.wind.deg < 310){
-          this.idealWindDir = true
-        } else {
-          this.idealWindDir = false
-        }
-        break;
-      case "Sullivan":
-        if (this.weather.wind.deg > 45 && this.weather.wind.deg < 250){
-          this.idealWindDir = true
-        } else {
-          this.idealWindDir = false
-        }
-        break;
-      default:
+    if(this.currentSite){
+      if (this.weather.wind.deg > this.currentSite.minWindDir && this.weather.wind.deg < this.currentSite.maxWindDir){
         this.idealWindDir = true
+      } else {
+        this.idealWindDir = false
+      }
+      console.log("min wind:", this.currentSite.minWindDir, "max wind:", this.currentSite.maxWindDir, this.idealWindDir)
     }
     return this.idealWindDir
   }
+    // switch(this.weather.wind.deg){
+    //   case "South Paris":
+    //     if (this.weather.wind.deg > 120 && this.weather.wind.deg < 120){
+    //       this.idealWindDir = true
+    //     } else {
+    //       this.idealWindDir = false
+    //     }
+    //     break;
+    //   case "Blue Hill":
+    //     if (this.weather.wind.deg > 60 && this.weather.wind.deg < 190){
+    //       this.idealWindDir = true
+    //     } else {
+    //       this.idealWindDir = false
+    //     }
+    //     break;
+    //   case "Frankfort":
+    //     if (this.weather.wind.deg > 170 && this.weather.wind.deg < 310){
+    //       this.idealWindDir = true
+    //     } else {
+    //       this.idealWindDir = false
+    //     }
+    //     break;
+    //   case "Sullivan":
+    //     if (this.weather.wind.deg > 45 && this.weather.wind.deg < 250){
+    //       this.idealWindDir = true
+    //     } else {
+    //       this.idealWindDir = false
+    //     }
+    //     break;
+    //   default:
+    //     this.idealWindDir = true
+    // }
+
 
   getDescriptionRating(){
     console.log('getDescriptionRating is running')

@@ -5,7 +5,7 @@
     <option *ngFor="let state of stateList" value="{{state}}">{{state}}</option>
   </select>
   <div class="site-buttons">
-    <button *ngFor="let site of currentStateSites"  (click)="findWeather(site.zip)" >{{site.name}}</button>
+    <button *ngFor="let site of currentStateSites"  (click)="findWeather(site.zip); setCurrentSite(site)" >{{site.name}}</button>
   </div>
   <!-- <div class="site-buttons">
     <button (click)="findWeather('04281')" >Streaked Mt.</button>
@@ -20,4 +20,4 @@
     <input class='button' (click)="findWeather(zip)" type="submit" value="Search"/>
 </section>
 <hr>
-<app-weather-results [weather]='weather' ></app-weather-results>
+<app-weather-results [weather]='weather' [currentSite]='currentSite'></app-weather-results>
