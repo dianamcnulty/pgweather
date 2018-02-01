@@ -19,11 +19,12 @@ export class SearchComponent implements OnInit {
   currentStateSites: Array<any> = []
   currentState: string = 'Select a State'
   currentSite: any;
+  skillLevel: string = "P2"
 
   constructor(private searchService: SearchService) { }
 
   findWeather(zip){
-    console.log('zip is', zip)
+    this.currentSite = undefined
     this.searchSubject.next(zip) // .next informs subscribers of searchSubject that change happened
   }
   ngOnInit() {
@@ -32,8 +33,8 @@ export class SearchComponent implements OnInit {
     .subscribe(zip => {
         this.searchService.getWeather(zip)
         .subscribe((response) => {
-          console.log(response.json())
           this.weather = response.json()
+          console.log(this.weather)
         });
     })
     this.searchService.getFlyingSites().subscribe(response=>{
@@ -43,7 +44,6 @@ export class SearchComponent implements OnInit {
           this.stateList.push(site.state)
         }
       })
-      console.log('flying sites', this.stateList)
     }
     )
   }
@@ -54,7 +54,6 @@ export class SearchComponent implements OnInit {
         this.currentStateSites.push(site)
       }
     })
-    console.log('state sites', this.currentStateSites)
   }
   setCurrentSite(site){
     this.currentSite = site

@@ -21,3 +21,6 @@
 .town-name {
   color: #14BDCC;
 }
+.inline{
+  display: inline-block;
+}

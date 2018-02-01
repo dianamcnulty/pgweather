@@ -1,3 +1,4 @@
+
 <section>
   <h3 class='dark-text choose'>Known Flying Sites in</h3>
   <select [(ngModel)]="currentState"  (change)="getCurrentStateSites(currentState)">
@@ -14,10 +15,19 @@
     <button (click)="findWeather('04664')" >Schoodic Mt.</button>
   </div> -->
 </section>
-<section>
+
+<section class="inline">
     <h4 class='dark-text'> Or Search by Zip Code</h4>
     <input [(ngModel)]="zip" type="text" placeholder="Zip Code Here" (keyup)="findWeather(zip)"/>
     <input class='button' (click)="findWeather(zip)" type="submit" value="Search"/>
 </section>
+<section class="inline">
+    <h4 class='dark-text'>Pilot Skill Level</h4>
+    <select [(ngModel)]="skillLevel">
+      <option selected >P2</option>
+      <option>P3</option>
+      <option>P4</option>
+    </select>
+</section>
 <hr>
-<app-weather-results [weather]='weather' [currentSite]='currentSite'></app-weather-results>
+<app-weather-results [weather]='weather' [currentSite]='currentSite' [skillLevel]='skillLevel'></app-weather-results>

@@ -1,13 +1,12 @@
 <section id='weather' class='weather-box' *ngIf="weather">
 
   <h3 class='town-name'[ngClass]="{'ideal': idealConditions, location: true}"><img [ngClass]="{'show-check': idealConditions, 'no-check': !idealConditions}" src='https://findicons.com/files/icons/1964/colorcons_green/128/checkmark.png'>Here's the weather in {{weather.name}}:</h3>
-  <p  [ngClass]="{'danger': descriptionRating == danger, 'caution': descriptionRating == 'caution', 'safe': descriptionRating == 'safe' }">{{conditionDescription}}</p>
+  <p  [ngClass]="{'danger': descriptionRating == 'danger', 'caution': descriptionRating == 'caution', 'safe': descriptionRating == 'safe' }">{{conditionDescription}}</p>
   <p id='temp' [ngClass]="{'caution': weather.main.temp <= 35, 'safe': weather.main.temp > 35}">There's a high of {{weather.main.temp_max}}˚ and a low of {{weather.main.temp_min}}˚</p>
-  <p id='windspeed' [ngClass]="{'caution': weather.wind.speed > 12, 'safe': weather.wind.speed < 12}" >Wind speed is {{weather.wind.speed}} <span *ngIf="weather.wind.gust" [ngClass]="{danger: (weather.wind.gust - weather.wind.speed) > 5}">gusting to {{weather.wind.gust}} </span>
-    <span [ngClass]="{'safe': idealWindDir}" *ngIf='weather.wind.deg > 45 && weather.wind.deg <= 120'>from the E</span>
-    <span [ngClass]="{'safe': idealWindDir}" *ngIf='weather.wind.deg > 120 && weather.wind.deg <= 230'>from the S</span>
-    <span [ngClass]="{'safe': idealWindDir}" *ngIf='weather.wind.deg > 230 && weather.wind.deg <= 310'>from the W</span>
-    <span [ngClass]="{'safe': idealWindDir}" *ngIf='weather.wind.deg <= 45 || weather.wind.deg > 310'>from the N</span></p>
-    <p class='caution advisory' *ngIf='weather.wind.speed > 13'> Due to wind conditions, it is not advised that P2 or inexperienced pilots fly here today.</p>
-    <div class='caution advisory' *ngIf='currentSite.restrictions'><p *ngFor="let restriction of currentSite.restrictions">{{restriction}}</p></div>
+  <p id='windspeed' [ngClass]="{'caution': weather.wind.speed > maxWindForSkill, 'safe': weather.wind.speed <= maxWindForSkill}" >Wind speed is {{weather.wind.speed}} <span *ngIf="weather.wind.gust" [ngClass]="{danger: (weather.wind.gust - weather.wind.speed) > 5}">gusting to {{weather.wind.gust}} </span>
+
+
+    <span [ngClass]="{'danger': !idealWindDir}" *ngIf='weather.wind.deg'>from the {{windDirDisplay}}</span>
+    <p class='caution advisory' *ngIf='skillLevel == "P2" && weather.wind.speed > maxWindForSkill'> Due to wind conditions, it is not advised that P2 or inexperienced pilots fly here today.</p>
+    <div class='caution advisory' *ngIf='currentSite && currentSite.restrictions'><p *ngFor="let restriction of currentSite.restrictions">{{restriction}}</p></div>
 </section>
