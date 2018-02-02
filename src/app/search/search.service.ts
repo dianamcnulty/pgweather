@@ -9,6 +9,6 @@ export class SearchService {
   }
   getFlyingSites(){
     console.log('requesting flying sites.')
-    return this.http.get('http://localhost:4741/pgsites/')
+    return this.http.get('https://paraglidingapi.herokuapp.com/pgsites')
   }
 }
