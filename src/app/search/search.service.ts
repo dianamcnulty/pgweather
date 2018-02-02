@@ -9,6 +9,6 @@ export class SearchService {
   }
   getFlyingSites(){
     console.log('requesting flying sites.')
-    return this.http.get('http://localhost:8080/sites/')
+    return this.http.get('http://localhost:4741/pgsites/')
   }
 }

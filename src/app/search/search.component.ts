@@ -38,7 +38,7 @@ export class SearchComponent implements OnInit {
         });
     })
     this.searchService.getFlyingSites().subscribe(response=>{
-      this.flyingSites = response.json().flyingSites
+      this.flyingSites = response.json().pgSites
       this.flyingSites.forEach(site => {
         if(!this.stateList.includes(site.state)){
           this.stateList.push(site.state)
